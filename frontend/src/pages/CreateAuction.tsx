@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Navbar } from '../components/Navbar';
 import { useAuth } from '../context/AuthContext';
 
-const API = import.meta.env.VITE_API_URL;
+const API = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
 
 interface FormState {
   productName: string;

@@ -6,7 +6,7 @@ import { Navbar } from '../components/Navbar';
 import { useAuth } from '../context/AuthContext';
 import { Link, Navigate } from 'react-router-dom';
 
-const API = import.meta.env.VITE_API_URL;
+const API = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
 
 function SkeletonCard() {
   return (

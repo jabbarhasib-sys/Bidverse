@@ -8,7 +8,7 @@ import { Navbar } from '../components/Navbar';
 import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 
-const API = import.meta.env.VITE_API_URL;
+const API = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
 
 function StatCard({ value, label, icon }: { value: string | number; label: string; icon: string }) {
   return (

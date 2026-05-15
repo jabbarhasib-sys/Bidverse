@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 interface Props { auction: Auction; }
 
-const API = import.meta.env.VITE_API_URL;
+const API = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
 
 function useLiveCountdown(endTime: string) {
   const calc = useCallback(() => {
