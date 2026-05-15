@@ -36,9 +36,10 @@ async function autoSeed() {
   if (userCount > 0) return; // already seeded
 
   console.log('Seeding in-memory database...');
-  const [alice, bob] = await User.create([
-    { name: 'Alice', email: 'alice@example.com', password: '123456' },
-    { name: 'Bob',   email: 'bob@example.com',   password: '123456' },
+  const [alice, bob, jabbar] = await User.create([
+    { name: 'Alice',  email: 'alice@example.com',     password: '123456' },
+    { name: 'Bob',    email: 'bob@example.com',       password: '123456' },
+    { name: 'Jabbar', email: 'jabbar.hasib@gmail.com', password: '123456' },
   ]);
 
   await Auction.create([

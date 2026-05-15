@@ -24,13 +24,7 @@ const io     = new Server(server, {
 // ── Middleware ────────────────────────────────────────────
 // Allow any localhost port in dev (handles Vite port-bumping 5173→5174→etc.)
 const corsOptions = {
-  origin: (origin, callback) => {
-    if (!origin || /^http:\/\/localhost:\d+$/.test(origin)) {
-      callback(null, true);
-    } else {
-      callback(null, process.env.CLIENT_URL === origin);
-    }
-  },
+  origin: true, // Allow all for demo/deployment ease
   credentials: true,
 };
 app.use(cors(corsOptions));
