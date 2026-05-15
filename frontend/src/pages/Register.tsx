@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '../context/NotesContext';
+import { useAuth } from '../context/AuthContext';
 
 const FIELDS = [
   {

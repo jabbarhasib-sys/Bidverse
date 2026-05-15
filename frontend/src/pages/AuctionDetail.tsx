@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Auction } from '../types';
 import { NoteEditor } from '../components/NoteEditor';
 import { Navbar } from '../components/Navbar';
-import { useAuth } from '../context/NotesContext';
+import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 
 const API = import.meta.env.VITE_API_URL;

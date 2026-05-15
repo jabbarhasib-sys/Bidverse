@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '../context/NotesContext';
+import { useAuth } from '../context/AuthContext';
 
 export function Login() {
   const { login } = useAuth();

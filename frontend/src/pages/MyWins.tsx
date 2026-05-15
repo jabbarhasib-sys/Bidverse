@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Auction } from '../types';
 import { NoteList } from '../components/NoteList';
 import { Navbar } from '../components/Navbar';
-import { useAuth } from '../context/NotesContext';
+import { useAuth } from '../context/AuthContext';
 import { Link, Navigate } from 'react-router-dom';
 
 const API = import.meta.env.VITE_API_URL;

@@ -5,7 +5,7 @@ import { NoteList } from '../components/NoteList';
 import { SearchBar } from '../components/SearchBar';
 import { TagFilter } from '../components/TagFilter';
 import { Navbar } from '../components/Navbar';
-import { useAuth } from '../context/NotesContext';
+import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 
 const API = import.meta.env.VITE_API_URL;

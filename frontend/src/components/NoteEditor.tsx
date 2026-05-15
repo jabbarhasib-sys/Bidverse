@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios';
 import { io, Socket } from 'socket.io-client';
 import { Auction, Bid } from '../types';
-import { useAuth } from '../context/NotesContext';
+import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import { Link } from 'react-router-dom';
 
