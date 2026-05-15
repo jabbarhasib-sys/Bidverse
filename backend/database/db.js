@@ -30,15 +30,34 @@ export const connectDB = async () => {
 };
 
 async function autoSeed() {
-  const userCount = await User.countDocuments();
-  if (userCount > 0) return; // already seeded
+  console.log('Checking demo accounts...');
 
-  console.log('Seeding in-memory database...');
-  const [alice, bob, jabbar] = await User.create([
-    { name: 'Alice',  email: 'alice@example.com',     password: '123456' },
-    { name: 'Bob',    email: 'bob@example.com',       password: '123456' },
-    { name: 'Jabbar', email: 'jabbar.hasib@gmail.com', password: '123456' },
-  ]);
+  // Ensure each demo user exists individually (upsert-style)
+  const demoUsers = [
+    { name: 'Alice',  email: 'alice@example.com',      password: '123456' },
+    { name: 'Bob',    email: 'bob@example.com',         password: '123456' },
+    { name: 'Jabbar', email: 'jabbar.hasib@gmail.com',  password: '123456' },
+  ];
+
+  const created = [];
+  for (const u of demoUsers) {
+    let user = await User.findOne({ email: u.email });
+    if (!user) {
+      user = await User.create(u);
+      console.log(`Created demo user: ${u.email}`);
+    }
+    created.push(user);
+  }
+
+  // Only seed auctions if there are none at all
+  const auctionCount = await Auction.countDocuments();
+  if (auctionCount > 0) {
+    console.log('Demo accounts ready, auctions already exist.');
+    return;
+  }
+
+  const [alice, bob] = created;
+  console.log('Seeding demo auctions...');
 
   await Auction.create([
     {
@@ -78,5 +97,6 @@ async function autoSeed() {
       imageUrl: 'https://images.unsplash.com/photo-1613771404721-1f92d799e49f?auto=format&fit=crop&q=80&w=800'
     }
   ]);
-  console.log('In-memory database seeded successfully!');
+
+  console.log('Demo database seeded successfully!');
 }
