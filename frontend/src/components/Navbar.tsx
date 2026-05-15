@@ -64,7 +64,7 @@ export function Navbar() {
             <>
               <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[rgba(34,211,238,0.06)] border border-[rgba(34,211,238,0.12)]">
                 <div className="w-7 h-7 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-white text-xs font-black">
-                  {user.name.charAt(0).toUpperCase()}
+                  {user?.name?.charAt(0)?.toUpperCase() ?? '?'}
                 </div>
                 <span className="text-sm font-semibold text-slate-300">
                   {user.name}
@@ -117,7 +117,7 @@ export function Navbar() {
             <>
               <div className="flex items-center gap-3 pb-3 border-b border-[rgba(99,179,237,0.12)]">
                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-white font-black">
-                  {user.name.charAt(0).toUpperCase()}
+                  {user?.name?.charAt(0)?.toUpperCase() ?? '?'}
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-white">{user.name}</p>

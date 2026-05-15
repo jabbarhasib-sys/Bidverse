@@ -132,9 +132,9 @@ export function AuctionDetail() {
                     <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Listed by</span>
                     <div className="flex items-center gap-2">
                       <div className="w-6 h-6 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-white text-xs font-black">
-                        {auction.createdBy.name.charAt(0).toUpperCase()}
+                        {auction.createdBy?.name?.charAt(0)?.toUpperCase() ?? '?'}
                       </div>
-                      <span className="text-sm font-semibold text-slate-300">{auction.createdBy.name}</span>
+                      <span className="text-sm font-semibold text-slate-300">{auction.createdBy?.name ?? 'Unknown'}</span>
                     </div>
                   </div>
                   <div className="flex items-center justify-between">

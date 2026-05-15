@@ -142,10 +142,10 @@ export function NoteCard({ auction, index = 0 }: Props) {
               {auction.currentHighestBidder ? (
                 <>
                   <div className="w-6 h-6 rounded-full bg-gradient-to-br from-slate-600 to-slate-700 flex items-center justify-center text-xs font-bold text-slate-300">
-                    {auction.currentHighestBidder.name.charAt(0).toUpperCase()}
+                    {auction.currentHighestBidder?.name?.charAt(0)?.toUpperCase() ?? '?'}
                   </div>
                   <p className="text-xs text-slate-500">
-                    Won by <span className="text-slate-300 font-semibold">{auction.currentHighestBidder.name}</span>
+                    Won by <span className="text-slate-300 font-semibold">{auction.currentHighestBidder?.name ?? 'Unknown'}</span>
                   </p>
                 </>
               ) : (
