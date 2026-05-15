@@ -15,7 +15,10 @@ export const register = async (req, res) => {
     if (exists) return res.status(409).json({ message: 'Email already in use' });
 
     const user = await User.create({ name, email, password });
-    res.status(201).json({ token: signToken(user._id), user: { id: user._id, name: user.name, email: user.email } });
+    res.status(201).json({
+      token: signToken(user._id),
+      user: { _id: user._id, id: user._id, name: user.name, email: user.email }
+    });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -25,12 +28,18 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await User.findOne({ email });
-    if (!user || !(await User.matchPassword(user, password)))
-      return res.status(401).json({ message: 'Invalid credentials' });
+    const user = await User.findOne({ email }).select('+password');
+    if (!user) return res.status(401).json({ message: 'Invalid credentials' });
 
-    res.json({ token: signToken(user._id), user: { id: user._id, name: user.name, email: user.email } });
+    const isMatch = await user.matchPassword(password);
+    if (!isMatch) return res.status(401).json({ message: 'Invalid credentials' });
+
+    res.json({
+      token: signToken(user._id),
+      user: { _id: user._id, id: user._id, name: user.name, email: user.email }
+    });
   } catch (err) {
+    console.error('Login error:', err);
     res.status(500).json({ message: err.message });
   }
 };

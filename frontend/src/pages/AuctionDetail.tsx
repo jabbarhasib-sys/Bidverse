@@ -154,7 +154,7 @@ export function AuctionDetail() {
                 </div>
 
                 {/* Creator Actions */}
-                {live && user && user._id === auction.createdBy._id && (
+                {live && user && (user._id || user.id) === auction.createdBy._id && (
                   <div className="mt-6 pt-4 border-t border-[rgba(251,113,133,0.15)] text-center">
                     <button 
                       onClick={handleCloseAuction}
