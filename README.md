@@ -1,5 +1,7 @@
 # BidVerse – Real-Time Auction Platform
 
+BidVerse: A real-time bidding platform featuring live auction updates via WebSockets and user authentication.
+
 ## Structure
 ```
 bidverse/
@@ -27,7 +29,7 @@ npm run dev
 
 ### Seed DB
 ```bash
-cd database
+cd backend/database
 node seeds/seed.js
 ```
 
