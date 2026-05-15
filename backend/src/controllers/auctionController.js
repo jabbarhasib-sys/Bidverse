@@ -1,4 +1,4 @@
-import Auction from '../database/models/Auction.model.js';
+import Auction from '../../database/models/Auction.model.js';
 
 // GET /api/auctions
 export const getAuctions = async (_req, res) => {

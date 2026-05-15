@@ -1,5 +1,5 @@
-import Bid from '../database/models/Bid.model.js';
-import Auction from '../database/models/Auction.model.js';
+import Bid from '../../database/models/Bid.model.js';
+import Auction from '../../database/models/Auction.model.js';
 
 // POST /api/bids
 export const placeBid = async (req, res) => {
