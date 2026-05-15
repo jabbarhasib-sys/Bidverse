@@ -1,0 +1,30 @@
+[
+  {
+    "_id": "819a510cb81775fa3351d6b6",
+    "name": "Alice",
+    "email": "alice@example.com",
+    "password": "$2b$10$rzZQwTuzbPc98wMMnb11JO5KJkqDh89rUJ7trDWUnH1dXvMerpBT.",
+    "createdAt": "2026-05-11T06:41:37.815Z"
+  },
+  {
+    "_id": "d2f381c9afddb633db276166",
+    "name": "Bob",
+    "email": "bob@example.com",
+    "password": "$2b$10$squ8zBH9u1oiF8ha9FMisuYcJiwaoUkaRHrRgoYLNHmIFX2EB/eBG",
+    "createdAt": "2026-05-11T06:41:37.877Z"
+  },
+  {
+    "_id": "f1a2b3c4d5e6f7a8b9c0d1e2",
+    "name": "Jabbar",
+    "email": "jabbar.hasib@gmail.com",
+    "password": "$2b$10$tOjR6cuYqhAnXISG0qOLbu5.8im0MEjODgfc0UcTuGppUeySUeeHe",
+    "createdAt": "2026-05-14T16:49:37.000Z"
+  },
+  {
+    "_id": "64e5ea37c382fa6a939bd23c",
+    "name": "hasib",
+    "email": "jabbarhasib2004@gmail.com",
+    "password": "$2b$10$yBpeuvQxX2ac9OnltbxHRui4EIzS8ytulIipaP1XgQFWtX6ofKxI2",
+    "createdAt": "2026-05-15T06:58:25.889Z"
+  }
+]

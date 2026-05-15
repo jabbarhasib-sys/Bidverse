@@ -1,0 +1,37 @@
+[
+  {
+    "_id": "1f695d6b1839814db270ecf0",
+    "auction": "9b0b652a356b7974a0fea09e",
+    "bidder": "819a510cb81775fa3351d6b6",
+    "amount": 15500,
+    "createdAt": "2026-05-14T17:40:40.085Z"
+  },
+  {
+    "_id": "3f6763107f44c4508677bc08",
+    "auction": "9b0b652a356b7974a0fea09e",
+    "bidder": "d2f381c9afddb633db276166",
+    "amount": 16500,
+    "createdAt": "2026-05-14T17:41:33.111Z"
+  },
+  {
+    "_id": "a02ff9d4f7669b5469cc202d",
+    "auction": "9b0b652a356b7974a0fea09e",
+    "bidder": "f1a2b3c4d5e6f7a8b9c0d1e2",
+    "amount": 16600,
+    "createdAt": "2026-05-14T18:05:16.037Z"
+  },
+  {
+    "_id": "46c2c75c84ec6565534a0051",
+    "auction": "7b77f02f801dd70831f41940",
+    "bidder": "f1a2b3c4d5e6f7a8b9c0d1e2",
+    "amount": 51000,
+    "createdAt": "2026-05-14T18:31:07.348Z"
+  },
+  {
+    "_id": "54c345c969f513c7523925d8",
+    "auction": "7b77f02f801dd70831f41940",
+    "bidder": "819a510cb81775fa3351d6b6",
+    "amount": 56000,
+    "createdAt": "2026-05-14T18:31:31.599Z"
+  }
+]

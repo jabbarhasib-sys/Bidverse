@@ -1,0 +1,64 @@
+[
+  {
+    "_id": "0e356b91f9ec7c82f495a8b7",
+    "productName": "1967 Ford Mustang Shelby GT500",
+    "description": "A fully restored classic muscle car. V8 engine, manual transmission, and iconic Eleanor styling.",
+    "startingPrice": 85000,
+    "endTime": "2026-05-13T06:41:37.931Z",
+    "createdBy": "819a510cb81775fa3351d6b6",
+    "imageUrl": "https://images.unsplash.com/photo-1584345611124-2c027e029272?auto=format&fit=crop&q=80&w=800",
+    "currentHighestBid": 85000,
+    "createdAt": "2026-05-11T06:41:37.931Z",
+    "status": "ended"
+  },
+  {
+    "_id": "4b92aa3e1f9211792bc9ecd3",
+    "productName": "Rolex Submariner Date",
+    "description": "A pristine condition luxury timepiece. Includes original box and papers.",
+    "startingPrice": 12000,
+    "endTime": "2026-05-12T06:41:37.931Z",
+    "createdBy": "d2f381c9afddb633db276166",
+    "imageUrl": "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&q=80&w=800",
+    "currentHighestBid": 12000,
+    "createdAt": "2026-05-11T06:41:37.932Z",
+    "status": "ended"
+  },
+  {
+    "_id": "cbfb2077a3c5b20e4a5ed2fe",
+    "productName": "Vintage Leica M3 Camera",
+    "description": "Legendary 35mm rangefinder camera in mint condition. Includes Summicron 50mm lens.",
+    "startingPrice": 3500,
+    "endTime": "2026-05-11T18:41:37.932Z",
+    "createdBy": "819a510cb81775fa3351d6b6",
+    "imageUrl": "https://images.unsplash.com/photo-1516961642265-531546e84af2?auto=format&fit=crop&q=80&w=800",
+    "currentHighestBid": 3500,
+    "createdAt": "2026-05-11T06:41:37.933Z",
+    "status": "ended"
+  },
+  {
+    "_id": "9b0b652a356b7974a0fea09e",
+    "productName": "phone",
+    "description": "used phone",
+    "startingPrice": 15000,
+    "endTime": "2026-12-12T11:55:00.000Z",
+    "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.TmkdUxCl2AJXv1FJAyDBPwHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "createdBy": "f1a2b3c4d5e6f7a8b9c0d1e2",
+    "currentHighestBid": 16600,
+    "createdAt": "2026-05-14T17:24:29.366Z",
+    "status": "active",
+    "currentHighestBidder": "f1a2b3c4d5e6f7a8b9c0d1e2"
+  },
+  {
+    "_id": "7b77f02f801dd70831f41940",
+    "productName": "bullet",
+    "description": "used",
+    "startingPrice": 50000,
+    "endTime": "2026-05-15T10:00",
+    "imageUrl": "",
+    "createdBy": "f1a2b3c4d5e6f7a8b9c0d1e2",
+    "status": "active",
+    "currentHighestBid": 56000,
+    "createdAt": "2026-05-14T18:30:59.050Z",
+    "currentHighestBidder": "819a510cb81775fa3351d6b6"
+  }
+]

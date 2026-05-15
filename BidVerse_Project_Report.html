@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>BidVerse Project Report</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">BidVerse Project Report</h1>
+</header>
+<h1 id="bidverse-real-time-auction-platform">BidVerse — Real-Time Auction Platform</h1>
+<h3 id="project-report">Project Report</h3>
+<hr />
+<p><strong>Course:</strong> Web Application Development<br />
+<strong>Project Title:</strong> BidVerse — A Real-Time Online Auction System<br />
+<strong>Technology Stack:</strong> React.js · Node.js · Express.js · Socket.IO · JSON Database<br />
+<strong>Submitted by:</strong> Jabbar<br />
+<strong>Date:</strong> May 2026</p>
+<hr />
+<p> </p>
+<hr />
+<h2 id="abstract">1. Abstract</h2>
+<p> </p>
+<p>The world of commerce has changed dramatically in the digital age, and one of the most exciting evolutions has been the move from physical auction houses to fully interactive online auction platforms. <strong>BidVerse</strong> is a full-stack, real-time web application designed to recreate the thrill and transparency of live bidding — right from the comfort of a browser.</p>
+<p>At its core, BidVerse allows registered users to list items for auction, browse active listings, and place competitive bids that are reflected instantly across all connected clients without any page refresh. The platform leverages <strong>Socket.IO</strong> for bi-directional real-time communication, which ensures that when someone places a bid, every other participant watching the same auction sees the updated price within milliseconds.</p>
+<p>What makes BidVerse stand out from a simple CRUD application is its live notification system. When an auction creator decides to close bidding and accept the highest offer, the winning bidder receives an immediate on-screen winner announcement — a full-screen golden congratulatory banner — along with a toast popup. This simulates the excitement of a real auction gavel dropping.</p>
+<p>The project was built with a modern dark-mode aesthetic using <strong>Tailwind CSS</strong> and glassmorphism effects, making it visually premium and fully responsive across all screen sizes. The backend is powered by <strong>Node.js</strong> and <strong>Express.js</strong>, with data persisted in structured JSON files to eliminate the dependency on external database services during development and testing.</p>
+<p>Throughout this report, we walk through every aspect of the system — from the reasoning behind the architectural decisions, to the user-facing design choices, the backend API structure, real-time communication patterns, and the challenges overcome during development.</p>
+<hr />
+<p> </p>
+<hr />
+<h2 id="introduction-features">2. Introduction &amp; Features</h2>
+<p> </p>
+<h3 id="what-is-bidverse">2.1 What is BidVerse?</h3>
+<p>BidVerse was born from a simple question: <em>What would it feel like to build an auction house on the internet that actually feels alive?</em> Traditional e-commerce platforms like eBay show you a timer and a price, but the experience is static. You place a bid, refresh the page, and hope nobody outbid you in the five seconds it took to load. That experience felt stale.</p>
+<p>BidVerse takes a different approach. It treats every browser connected to an auction as a <strong>participant in a live event</strong>. The moment any user places a bid, all other viewers of that auction see the price update in real time, the current leader changes, and the countdown clock ticks with urgency. The platform rewards attentiveness — the most engaged bidder wins.</p>
+<p>The application targets three types of users:</p>
+<ul>
+<li><strong>Sellers (Auction Creators):</strong> People who want to list items and accept bids. They have full control over their auctions and can manually close bidding at any moment to accept the current highest offer.</li>
+<li><strong>Buyers (Bidders):</strong> Users who browse listings, follow auctions they are interested in, and compete with others by placing bids.</li>
+<li><strong>Guests:</strong> Unregistered visitors can browse all active and ended auctions and see bid histories, but must register to participate.</li>
+</ul>
+<p> </p>
+<h3 id="core-features">2.2 Core Features</h3>
+<p> </p>
+<p><strong>🔐 User Authentication System</strong></p>
+<p>BidVerse implements a complete authentication flow with user registration and login. Passwords are never stored in plain text — they are hashed using <strong>bcrypt</strong> (10 rounds of salting) before being saved to the database. After login, the server issues a <strong>JSON Web Token (JWT)</strong> with a 7-day expiry, which the frontend stores in <code>localStorage</code> and attaches to every subsequent API request via the <code>Authorization: Bearer</code> header. This keeps sessions persistent across page refreshes without requiring a server-side session store.</p>
+<p><strong>⚡ Real-Time Bidding via Socket.IO</strong></p>
+<p>The heart of the platform is its real-time engine. When a user opens an auction detail page, their browser automatically establishes a persistent <strong>WebSocket connection</strong> to the server using Socket.IO and joins a room named after the auction’s unique ID. When any user submits a bid, the server validates it, saves it to the database, and then broadcasts a <code>new-bid</code> event to every socket in that auction’s room. Every connected browser updates the price, the leader name, and the bid history list — all without a single page reload.</p>
+<p><strong>🏆 Winner Notification System</strong></p>
+<p>One of the most exciting features of BidVerse is the winner announcement. When a seller clicks “Close Auction &amp; Accept Bid,” the server not only marks the auction as ended but also sends a private <code>auction-won</code> Socket.IO event directly to the winning bidder’s browser. This is achieved by having each logged-in user join a personal socket room (named after their user ID) immediately upon connecting. The winner then sees a full-screen, golden-glowing modal saying <em>“Congratulations! You won the auction for [Item Name]”</em> — making the experience genuinely exciting.</p>
+<p><strong>🔍 Live Search &amp; Filtering</strong></p>
+<p>The homepage features a real-time search bar that filters auctions as you type, matching against both product names and descriptions. A tab-based filter bar lets users toggle between “All,” “Live,” and “Ended” auctions without any API calls — the filtering is done entirely on the client side using memoized computation for maximum performance.</p>
+<p><strong>⏱ Live Countdown Timer</strong></p>
+<p>Every active auction displays a live countdown clock that ticks second by second directly in the browser. When an auction enters its final hour, the timer digits turn red and pulse with an urgency message: <em>“⚡ Ending soon — place your bid now!”</em> This creates genuine time pressure that encourages engagement.</p>
+<p><strong>📊 Statistics Dashboard</strong></p>
+<p>The homepage features a real-time statistics bar showing the number of live auctions, completed auctions, and the total value of all bids placed across the platform. These numbers update every time the page loads, giving users a sense of the platform’s scale and activity.</p>
+<p><strong>🖼 Skeleton Loading States</strong></p>
+<p>Rather than showing a blank screen while data loads, BidVerse displays animated skeleton placeholder cards that match the shape of the actual auction cards. This makes the interface feel fast and polished, even over slower network connections.</p>
+<p><strong>📱 Fully Responsive Design</strong></p>
+<p>Every page adapts seamlessly across mobile phones, tablets, and desktop monitors. The auction grid switches between one, two, and three columns depending on screen width, and the bidding interface stacks vertically on small screens.</p>
+<hr />
+<p> </p>
+<hr />
+<h2 id="frontend-design">3. Frontend Design</h2>
+<p> </p>
+<h3 id="technology-choices">3.1 Technology Choices</h3>
+<p>The frontend of BidVerse is built with <strong>React 18</strong> using <strong>TypeScript</strong> for type safety, bundled by <strong>Vite</strong> for near-instant hot module replacement during development. The styling is handled by <strong>Tailwind CSS</strong> compiled through PostCSS, with a heavily customised global stylesheet (<code>index.css</code>) that defines reusable design tokens, animation utilities, and custom component classes.</p>
+<p>Google Fonts are used for typography — specifically <strong>Inter</strong> for body text and <strong>Syne</strong> for display headings — loaded through the HTML <code>&lt;head&gt;</code> to keep everything self-contained.</p>
+<p> </p>
+<h3 id="design-system-aesthetic">3.2 Design System &amp; Aesthetic</h3>
+<p>The entire application is built around a <strong>deep dark mode</strong> colour palette inspired by deep space and neon glow. The primary background is <code>#070b14</code> — nearly black but with a subtle blue tint. Content surfaces use <code>#1e293b</code> (slate-800) with semi-transparent “glassmorphism” panels layered on top, created with CSS <code>backdrop-filter: blur()</code> and translucent borders.</p>
+<p>The accent colour throughout the platform is <strong>cyan (<code>#22d3ee</code>)</strong>, used for active bid values, buttons, links, and glow effects. Gold (<code>#fbbf24</code>) is reserved exclusively for winner-related elements — the crown icon on the top bidder, the winner banner, and the “🏆 You Won” toast notification. This deliberate colour language makes it immediately obvious who is leading and who has won.</p>
+<p>Animations are subtle but meaningful. Every page transition uses a <code>page-enter</code> fade-in with a slight upward translation. Bid amounts “flash” with a golden pulse when they update. The top bidder in the bid history list gets an animated crown (<code>👑</code>) avatar. Live auction badges pulse with a breathing animation to signal that the event is happening right now.</p>
+<p> </p>
+<h3 id="page-structure">3.3 Page Structure</h3>
+<p>The application has six main pages, each handling a distinct user journey:</p>
+<p><strong>Home Page (<code>/</code>)</strong><br />
+This is the discovery hub. At the top, a hero section with animated decorative gradient orbs displays the platform tagline and a live count of active auctions. Below it, three stat cards show platform-wide metrics. The main content area is an auction card grid with integrated search and filter controls. Each auction card shows a product image, the current highest bid in a prominent gradient font, the seller’s name, and a countdown or “Ended” badge.</p>
+<p><strong>Auction Detail Page (<code>/auctions/:id</code>)</strong><br />
+This is where the real action happens. The left half of a two-column grid shows the product image with a gradient overlay, the item description, seller details, and the start/end times. If the viewing user is the one who created the auction and it is still active, a red “Close Auction &amp; Accept Bid” button appears exclusively for them. The right half contains the <code>NoteEditor</code> component — the live bidding panel — which shows the current price, the countdown timer, the bid input form, quick-bid increment buttons, and the full scrollable bid history.</p>
+<p><strong>Login Page (<code>/login</code>)</strong><br />
+A minimal, centred card with BidVerse branding, email and password fields, and a gradient submit button. Includes a link to registration and graceful error messaging for invalid credentials.</p>
+<p><strong>Register Page (<code>/register</code>)</strong><br />
+Identical in layout to the login page, with an additional “Name” field. Password hashing happens server-side; the form does no client-side validation beyond basic HTML5 <code>required</code> attributes.</p>
+<p><strong>Create Auction Page (<code>/create</code>)</strong><br />
+A rich form page that lets authenticated users list a new item. Fields include product name, description, starting price (with a currency symbol prefix), auction end date/time, and an optional image URL. The form has real-time validation feedback and a disabled submit state while the API request is in flight.</p>
+<p><strong>My Wins Page (<code>/wins</code>)</strong><br />
+A personal history page showing all auctions the logged-in user has won. Each entry shows the item name, winning bid amount, and the date it ended.</p>
+<p> </p>
+<h3 id="component-architecture">3.4 Component Architecture</h3>
+<p>The frontend is cleanly separated into pages and reusable components:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Navbar</code></td>
+<td>Top navigation with brand logo, auth-aware links, and logout</td>
+</tr>
+<tr class="even">
+<td><code>NoteList</code></td>
+<td>Renders the grid of <code>NoteCard</code> components</td>
+</tr>
+<tr class="odd">
+<td><code>NoteCard</code></td>
+<td>Individual auction card with image, price badge, and countdown</td>
+</tr>
+<tr class="even">
+<td><code>NoteEditor</code></td>
+<td>The full bidding panel — Socket.IO listener, bid form, history</td>
+</tr>
+<tr class="odd">
+<td><code>SearchBar</code></td>
+<td>Controlled text input for real-time search</td>
+</tr>
+<tr class="even">
+<td><code>TagFilter</code></td>
+<td>Tab buttons for All / Live / Ended filter</td>
+</tr>
+<tr class="odd">
+<td><code>ToastProvider</code></td>
+<td>Global notification context with animated toast queue</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<h3 id="state-management">3.5 State Management</h3>
+<p>Global state is minimal and purpose-built. Two React Contexts handle the cross-cutting concerns:</p>
+<ul>
+<li><strong><code>AuthProvider</code> (NotesContext.tsx):</strong> Manages the logged-in user object and JWT token. Persists to <code>localStorage</code> so sessions survive page refreshes. Exposes <code>login</code>, <code>register</code>, and <code>logout</code> functions.</li>
+<li><strong><code>ToastProvider</code> (ToastContext.tsx):</strong> Manages a queue of toast notifications with auto-dismiss timers. Any component in the tree can call <code>useToast().toast(message, type)</code> to trigger a notification.</li>
+</ul>
+<p>All other state is local to the component that needs it, keeping the application simple and easy to reason about.</p>
+<hr />
+<p> </p>
+<hr />
+<h2 id="backend-design">4. Backend Design</h2>
+<p> </p>
+<h3 id="technology-stack">4.1 Technology Stack</h3>
+<p>The backend is a <strong>Node.js</strong> application using <strong>Express.js</strong> as the HTTP framework and <strong>Socket.IO</strong> for real-time WebSocket communication. It is written entirely in ES Module syntax (<code>import</code>/<code>export</code>) and run with <code>nodemon</code> during development for automatic restarts on file changes.</p>
+<p>The application is structured as a monorepo, with the backend code living in <code>/backend/src/</code> and the shared database layer in <code>/database/</code>. This separation was a deliberate architectural choice — the database access code is completely independent of the HTTP layer, making it theoretically possible to swap out the persistence mechanism (e.g., from JSON files to MongoDB) without touching any route or controller logic.</p>
+<p> </p>
+<h3 id="the-json-database-layer">4.2 The JSON Database Layer</h3>
+<p>One of the more unusual architectural decisions in BidVerse is its use of <strong>plain JSON files</strong> as the persistent data store, rather than a traditional database like MongoDB or PostgreSQL.</p>
+<p>This choice was driven by a practical development goal: <strong>zero external dependencies</strong>. The application starts and works immediately on any machine with Node.js installed, with no need to install MongoDB, configure connection strings, or spin up Docker containers. For a project of this scope — a course assignment with real-time features — this is a significant productivity advantage.</p>
+<p>The database layer lives in <code>database/jsonDb.js</code> and exports three “model” objects — <code>User</code>, <code>Auction</code>, and <code>Bid</code> — each with an API that mirrors Mongoose’s query interface. Internally, each model reads the corresponding JSON file from disk (<code>users.json</code>, <code>auctions.json</code>, <code>bids.json</code>), performs the operation in memory, and writes the updated array back to disk atomically.</p>
+<p>The file path is resolved using <code>import.meta.url</code> and <code>path.dirname</code> to ensure the JSON files are always written to <code>database/data/</code> relative to the database module itself, regardless of which directory the server is started from. This fixed a subtle but critical bug where running <code>npm run dev</code> from the <code>/backend</code> directory was causing empty JSON files to be created in the wrong location.</p>
+<p> </p>
+<h3 id="rest-api-endpoints">4.3 REST API Endpoints</h3>
+<p>The backend exposes a clean RESTful API organised into three route groups:</p>
+<p><strong>Authentication Routes (<code>/api/auth</code>)</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+<th>Auth Required</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>POST</td>
+<td><code>/api/auth/register</code></td>
+<td>Create a new user account</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>POST</td>
+<td><code>/api/auth/login</code></td>
+<td>Login and receive a JWT</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>GET</td>
+<td><code>/api/auth/me</code></td>
+<td>Get current user profile</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Auction Routes (<code>/api/auctions</code>)</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+<th>Auth Required</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GET</td>
+<td><code>/api/auctions</code></td>
+<td>List all auctions (with populated user data)</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>GET</td>
+<td><code>/api/auctions/:id</code></td>
+<td>Get a single auction by ID</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>POST</td>
+<td><code>/api/auctions</code></td>
+<td>Create a new auction listing</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>PATCH</td>
+<td><code>/api/auctions/:id/end</code></td>
+<td>Manually close an auction</td>
+<td>Yes (creator only)</td>
+</tr>
+<tr class="odd">
+<td>GET</td>
+<td><code>/api/auctions/won</code></td>
+<td>Get all auctions won by the current user</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bid Routes (<code>/api/bids</code>)</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+<th>Auth Required</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>POST</td>
+<td><code>/api/bids</code></td>
+<td>Place a bid on an auction</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>GET</td>
+<td><code>/api/bids/:auctionId</code></td>
+<td>Get all bids for an auction</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<h3 id="authentication-middleware">4.4 Authentication Middleware</h3>
+<p>Protected routes are guarded by the <code>protect</code> middleware in <code>authMiddleware.js</code>. The middleware extracts the JWT from the <code>Authorization: Bearer &lt;token&gt;</code> request header, verifies it against the <code>JWT_SECRET</code> environment variable using the <code>jsonwebtoken</code> library, and then fetches the corresponding user from the JSON database. If the token is missing, expired, or invalid, the middleware returns a <code>401 Unauthorized</code> response immediately. If valid, it attaches the user object (with the password field stripped out) to <code>req.user</code> for downstream controller access.</p>
+<p> </p>
+<h3 id="real-time-communication-architecture">4.5 Real-Time Communication Architecture</h3>
+<p>The real-time layer is built on <strong>Socket.IO 4</strong>, which establishes a WebSocket connection between the browser and the server, falling back to HTTP long-polling if WebSockets are unavailable.</p>
+<p>The server manages two types of socket rooms:</p>
+<ol type="1">
+<li><p><strong>Auction Rooms:</strong> Named after the auction’s <code>_id</code> (e.g., <code>"0e356b91f9ec7c82f495a8b7"</code>). When a user opens an auction detail page, the frontend automatically emits <code>join-auction</code> with the auction ID, and the server adds that socket to the room. All <code>new-bid</code> and <code>auction-ended</code> events are broadcast to this room, so every viewer of that auction receives them simultaneously.</p></li>
+<li><p><strong>Personal User Rooms:</strong> Named after the user’s <code>_id</code>. When a logged-in user’s browser connects, it also emits <code>join-user</code> with their ID. The server joins that socket to their personal room. This allows the <code>endAuction</code> controller to send the <code>auction-won</code> event directly and privately to just the winning bidder’s browser — like a whisper in a crowded room.</p></li>
+</ol>
+<p>The Socket.IO server instance (<code>io</code>) is attached to every Express request via a middleware that does <code>req.io = io</code>. This allows any controller to emit events without importing the server module, keeping the architecture loosely coupled.</p>
+<p> </p>
+<h3 id="bid-validation-logic">4.6 Bid Validation Logic</h3>
+<p>When a <code>POST /api/bids</code> request arrives, the <code>placeBid</code> controller performs several sequential validations before saving anything:</p>
+<ol type="1">
+<li><strong>Presence check:</strong> Both <code>auctionId</code> and <code>amount</code> must be provided.</li>
+<li><strong>Auction existence:</strong> The referenced auction must exist in the database.</li>
+<li><strong>Auction liveness:</strong> The auction’s status must not be <code>'ended'</code> and its <code>endTime</code> must be in the future.</li>
+<li><strong>Amount validity:</strong> The bid amount must be strictly greater than the current highest bid. A bid equal to or less than the current price is rejected.</li>
+</ol>
+<p>Only after all four checks pass does the server create a <code>Bid</code> record, update the <code>Auction</code> record’s <code>currentHighestBid</code> and <code>currentHighestBidder</code> fields, and broadcast the <code>new-bid</code> socket event.</p>
+<hr />
+<p> </p>
+<hr />
+<h2 id="output-screenshots-sample-code">5. Output Screenshots &amp; Sample Code</h2>
+<p> </p>
+<h3 id="homepage-auction-listings">5.1 Homepage — Auction Listings</h3>
+<p>The homepage greets users with an animated hero section, real-time platform statistics, and a responsive grid of auction cards. Each card features a product photo with a gradient overlay, the item title, a truncated description, the current highest bid prominently displayed in a cyan gradient font, and a pulsing “Live” or grey “Ended” status badge.</p>
+<p>The search bar at the top of the listing section filters results as the user types — no button press required — and the tab filter allows instant switching between “All Auctions,” “Live Only,” and “Ended” views.</p>
+<p> </p>
+<h3 id="auction-detail-page-the-bidding-arena">5.2 Auction Detail Page — The Bidding Arena</h3>
+<p>This is the most complex and visually rich page in the application. On the left, the product is shown with a full-width image, a description block, seller information, and — exclusively for the auction creator — a red “Close Auction &amp; Accept Bid” button.</p>
+<p>On the right, the live bidding panel shows: - The current highest bid in a giant, glowing number - A live countdown clock with days, hours, minutes, and seconds - A bid input form with quick-increment buttons (<code>+₹100</code>, <code>+₹500</code>, <code>+₹1,000</code>, <code>+₹5,000</code>) - A ranked bid history, with the top bidder displayed with a crown icon (<code>👑</code>)</p>
+<p> </p>
+<h3 id="sample-code-placing-a-bid-frontend">5.3 Sample Code — Placing a Bid (Frontend)</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// frontend/src/components/NoteEditor.tsx</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>const placeBid <span class="op">=</span> <span class="fu">async</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setError</span>(<span class="st">&#39;&#39;</span>)<span class="op">;</span> <span class="fu">setSuccess</span>(<span class="st">&#39;&#39;</span>)<span class="op">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  const num <span class="op">=</span> <span class="fu">parseFloat</span>(amount)<span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">if</span> (<span class="op">!</span>num <span class="op">||</span> num <span class="op">&lt;=</span> auction<span class="op">.</span><span class="at">currentHighestBid</span>) {</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setError</span>(<span class="vs">`Enter an amount greater than ₹</span><span class="sc">${</span>auction<span class="op">.</span><span class="at">currentHighestBid</span><span class="op">.</span><span class="fu">toLocaleString</span>()<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    return<span class="op">;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setPlacing</span>(true)<span class="op">;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  try {</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    await axios<span class="op">.</span><span class="fu">post</span>(<span class="vs">`</span><span class="sc">${</span>API<span class="sc">}</span><span class="vs">/api/bids`</span><span class="op">,</span> {</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>      auctionId<span class="op">:</span> auction<span class="op">.</span><span class="at">_id</span><span class="op">,</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>      amount<span class="op">:</span> num<span class="op">,</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setAmount</span>(<span class="st">&#39;&#39;</span>)<span class="op">;</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setSuccess</span>(<span class="vs">`Bid of ₹</span><span class="sc">${</span>num<span class="op">.</span><span class="fu">toLocaleString</span>()<span class="sc">}</span><span class="vs"> placed successfully!`</span>)<span class="op">;</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setTimeout</span>(() <span class="kw">=&gt;</span> <span class="fu">setSuccess</span>(<span class="st">&#39;&#39;</span>)<span class="op">,</span> <span class="dv">4000</span>)<span class="op">;</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  } <span class="fu">catch</span> (e) {</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    const err <span class="op">=</span> e <span class="im">as</span> { response<span class="op">?:</span> { data<span class="op">?:</span> { message<span class="op">?:</span> <span class="dt">string</span> } } }<span class="op">;</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setError</span>(err<span class="op">.</span><span class="at">response</span><span class="op">?.</span><span class="at">data</span><span class="op">?.</span><span class="at">message</span> <span class="op">??</span> <span class="st">&#39;Failed to place bid. Please try again.&#39;</span>)<span class="op">;</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  } finally {</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setPlacing</span>(false)<span class="op">;</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+<p> </p>
+<h3 id="sample-code-receiving-real-time-bids-socket.io">5.4 Sample Code — Receiving Real-Time Bids (Socket.IO)</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">// frontend/src/components/NoteEditor.tsx</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">useEffect</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  const socket <span class="op">=</span> <span class="fu">io</span>(API<span class="op">,</span> { auth<span class="op">:</span> { token } })<span class="op">;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  socketRef<span class="op">.</span><span class="at">current</span> <span class="op">=</span> socket<span class="op">;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Join the auction room and personal user room</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  socket<span class="op">.</span><span class="fu">emit</span>(<span class="st">&#39;join-auction&#39;</span><span class="op">,</span> initial<span class="op">.</span><span class="at">_id</span>)<span class="op">;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">if</span> (user<span class="op">?.</span><span class="at">_id</span>) socket<span class="op">.</span><span class="fu">emit</span>(<span class="st">&#39;join-user&#39;</span><span class="op">,</span> user<span class="op">.</span><span class="at">_id</span>)<span class="op">;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Handle incoming bids from other users</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  socket<span class="op">.</span><span class="fu">on</span>(<span class="st">&#39;new-bid&#39;</span><span class="op">,</span> (payload) <span class="kw">=&gt;</span> {</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setAuction</span>((prev) <span class="kw">=&gt;</span> ({</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>      <span class="op">...</span>prev<span class="op">,</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>      currentHighestBid<span class="op">:</span> payload<span class="op">.</span><span class="at">amount</span><span class="op">,</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>      currentHighestBidder<span class="op">:</span> {</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        _id<span class="op">:</span> payload<span class="op">.</span><span class="at">bidder</span><span class="op">.</span><span class="at">id</span><span class="op">,</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        name<span class="op">:</span> payload<span class="op">.</span><span class="at">bidder</span><span class="op">.</span><span class="at">name</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>      }<span class="op">,</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    }))<span class="op">;</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setBids</span>((prev) <span class="kw">=&gt;</span> [</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>      {</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        _id<span class="op">:</span> payload<span class="op">.</span><span class="at">bidId</span><span class="op">,</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        auction<span class="op">:</span> initial<span class="op">.</span><span class="at">_id</span><span class="op">,</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        bidder<span class="op">:</span> { _id<span class="op">:</span> payload<span class="op">.</span><span class="at">bidder</span><span class="op">.</span><span class="at">id</span><span class="op">,</span> name<span class="op">:</span> payload<span class="op">.</span><span class="at">bidder</span><span class="op">.</span><span class="at">name</span> }<span class="op">,</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        amount<span class="op">:</span> payload<span class="op">.</span><span class="at">amount</span><span class="op">,</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        createdAt<span class="op">:</span> payload<span class="op">.</span><span class="at">timestamp</span><span class="op">,</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>      }<span class="op">,</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>      <span class="op">...</span>prev<span class="op">,</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    ])<span class="op">;</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setNewBidFlash</span>(true)<span class="op">;</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setTimeout</span>(() <span class="kw">=&gt;</span> <span class="fu">setNewBidFlash</span>(false)<span class="op">,</span> <span class="dv">800</span>)<span class="op">;</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Handle winner notification — only fires for the winning bidder</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  socket<span class="op">.</span><span class="fu">on</span>(<span class="st">&#39;auction-won&#39;</span><span class="op">,</span> (payload) <span class="kw">=&gt;</span> {</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setWinnerBanner</span>({</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>      auctionName<span class="op">:</span> payload<span class="op">.</span><span class="at">productName</span><span class="op">,</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>      amount<span class="op">:</span> payload<span class="op">.</span><span class="at">finalBid</span><span class="op">,</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">toast</span>(<span class="vs">`🏆 You won &quot;</span><span class="sc">${</span>payload<span class="op">.</span><span class="at">productName</span><span class="sc">}</span><span class="vs">&quot;!`</span><span class="op">,</span> <span class="st">&#39;success&#39;</span>)<span class="op">;</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    socket<span class="op">.</span><span class="fu">emit</span>(<span class="st">&#39;leave-auction&#39;</span><span class="op">,</span> initial<span class="op">.</span><span class="at">_id</span>)<span class="op">;</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>    socket<span class="op">.</span><span class="fu">disconnect</span>()<span class="op">;</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>}<span class="op">,</span> [initial<span class="op">.</span><span class="at">_id</span><span class="op">,</span> token<span class="op">,</span> user<span class="op">?.</span><span class="at">_id</span><span class="op">,</span> toast])<span class="op">;</span></span></code></pre></div>
+<p> </p>
+<h3 id="sample-code-ending-an-auction-backend-controller">5.5 Sample Code — Ending an Auction (Backend Controller)</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">// backend/src/controllers/auctionController.js</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">const</span> endAuction <span class="op">=</span> <span class="kw">async</span> (req<span class="op">,</span> res) <span class="kw">=&gt;</span> {</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">try</span> {</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> auction <span class="op">=</span> <span class="cf">await</span> Auction<span class="op">.</span><span class="fu">findById</span>(req<span class="op">.</span><span class="at">params</span><span class="op">.</span><span class="at">id</span>)<span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>auction) <span class="cf">return</span> res<span class="op">.</span><span class="fu">status</span>(<span class="dv">404</span>)<span class="op">.</span><span class="fu">json</span>({ <span class="dt">message</span><span class="op">:</span> <span class="st">&#39;Not found&#39;</span> })<span class="op">;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Only the creator can close their own auction</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (auction<span class="op">.</span><span class="at">createdBy</span><span class="op">.</span><span class="at">_id</span> <span class="op">!==</span> req<span class="op">.</span><span class="at">user</span><span class="op">.</span><span class="at">_id</span> <span class="op">&amp;&amp;</span> auction<span class="op">.</span><span class="at">createdBy</span> <span class="op">!==</span> req<span class="op">.</span><span class="at">user</span><span class="op">.</span><span class="at">_id</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> res<span class="op">.</span><span class="fu">status</span>(<span class="dv">403</span>)<span class="op">.</span><span class="fu">json</span>({ <span class="dt">message</span><span class="op">:</span> <span class="st">&#39;Forbidden&#39;</span> })<span class="op">;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Mark as ended and record the winner</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    auction<span class="op">.</span><span class="at">status</span> <span class="op">=</span> <span class="st">&#39;ended&#39;</span><span class="op">;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    auction<span class="op">.</span><span class="at">winner</span> <span class="op">=</span> auction<span class="op">.</span><span class="at">currentHighestBidder</span><span class="op">;</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> Auction<span class="op">.</span><span class="fu">save</span>(auction)<span class="op">;</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Broadcast to all viewers of this auction</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    req<span class="op">.</span><span class="at">io</span><span class="op">.</span><span class="fu">to</span>(req<span class="op">.</span><span class="at">params</span><span class="op">.</span><span class="at">id</span>)<span class="op">.</span><span class="fu">emit</span>(<span class="st">&#39;auction-ended&#39;</span><span class="op">,</span> {</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>      <span class="dt">auctionId</span><span class="op">:</span> auction<span class="op">.</span><span class="at">_id</span><span class="op">,</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>      <span class="dt">winner</span><span class="op">:</span> auction<span class="op">.</span><span class="at">winner</span><span class="op">,</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>      <span class="dt">finalBid</span><span class="op">:</span> auction<span class="op">.</span><span class="at">currentHighestBid</span><span class="op">,</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Private notification only to the winner</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (auction<span class="op">.</span><span class="at">winner</span>) {</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> winnerId <span class="op">=</span> auction<span class="op">.</span><span class="at">winner</span><span class="op">.</span><span class="at">_id</span> <span class="op">||</span> auction<span class="op">.</span><span class="at">winner</span><span class="op">;</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>      req<span class="op">.</span><span class="at">io</span><span class="op">.</span><span class="fu">to</span>(winnerId)<span class="op">.</span><span class="fu">emit</span>(<span class="st">&#39;auction-won&#39;</span><span class="op">,</span> {</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>        <span class="dt">auctionId</span><span class="op">:</span> auction<span class="op">.</span><span class="at">_id</span><span class="op">,</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>        <span class="dt">productName</span><span class="op">:</span> auction<span class="op">.</span><span class="at">productName</span><span class="op">,</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>        <span class="dt">finalBid</span><span class="op">:</span> auction<span class="op">.</span><span class="at">currentHighestBid</span><span class="op">,</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>      })<span class="op">;</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    res<span class="op">.</span><span class="fu">json</span>(auction)<span class="op">;</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">catch</span> (err) {</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    res<span class="op">.</span><span class="fu">status</span>(<span class="dv">500</span>)<span class="op">.</span><span class="fu">json</span>({ <span class="dt">message</span><span class="op">:</span> err<span class="op">.</span><span class="at">message</span> })<span class="op">;</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+<p> </p>
+<h3 id="sample-code-the-json-database-layer">5.6 Sample Code — The JSON Database Layer</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">// database/jsonDb.js (excerpt)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">const</span> Auction <span class="op">=</span> {</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">find</span><span class="op">:</span> <span class="kw">async</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> users <span class="op">=</span> db<span class="op">.</span><span class="fu">getUsers</span>()<span class="op">;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> now <span class="op">=</span> <span class="kw">new</span> <span class="bu">Date</span>()<span class="op">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> db<span class="op">.</span><span class="fu">getAuctions</span>()<span class="op">.</span><span class="fu">map</span>(a <span class="kw">=&gt;</span> {</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> computedStatus <span class="op">=</span> <span class="kw">new</span> <span class="bu">Date</span>(a<span class="op">.</span><span class="at">endTime</span>) <span class="op">&gt;</span> now <span class="op">?</span> <span class="st">&#39;active&#39;</span> <span class="op">:</span> <span class="st">&#39;ended&#39;</span><span class="op">;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> {</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">...</span>a<span class="op">,</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">status</span><span class="op">:</span> a<span class="op">.</span><span class="at">status</span> <span class="op">||</span> computedStatus<span class="op">,</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Populate creator and bidder objects from users array</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="dt">createdBy</span><span class="op">:</span> users<span class="op">.</span><span class="fu">find</span>(u <span class="kw">=&gt;</span> u<span class="op">.</span><span class="at">_id</span> <span class="op">===</span> a<span class="op">.</span><span class="at">createdBy</span>) <span class="op">||</span> a<span class="op">.</span><span class="at">createdBy</span><span class="op">,</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="dt">currentHighestBidder</span><span class="op">:</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>          users<span class="op">.</span><span class="fu">find</span>(u <span class="kw">=&gt;</span> u<span class="op">.</span><span class="at">_id</span> <span class="op">===</span> a<span class="op">.</span><span class="at">currentHighestBidder</span>) <span class="op">||</span> a<span class="op">.</span><span class="at">currentHighestBidder</span><span class="op">,</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>      }<span class="op">;</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    })<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> <span class="kw">new</span> <span class="bu">Date</span>(b<span class="op">.</span><span class="at">createdAt</span>) <span class="op">-</span> <span class="kw">new</span> <span class="bu">Date</span>(a<span class="op">.</span><span class="at">createdAt</span>))<span class="op">;</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">save</span><span class="op">:</span> <span class="kw">async</span> (auctionObj) <span class="kw">=&gt;</span> {</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> auctions <span class="op">=</span> db<span class="op">.</span><span class="fu">getAuctions</span>()<span class="op">;</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> idx <span class="op">=</span> auctions<span class="op">.</span><span class="fu">findIndex</span>(a <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">_id</span> <span class="op">===</span> auctionObj<span class="op">.</span><span class="at">_id</span>)<span class="op">;</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (idx <span class="op">!==</span> <span class="op">-</span><span class="dv">1</span>) {</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Un-populate before saving — store only IDs, not full objects</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> toSave <span class="op">=</span> { <span class="op">...</span>auctionObj }<span class="op">;</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (toSave<span class="op">.</span><span class="at">createdBy</span><span class="op">?.</span><span class="at">_id</span>) toSave<span class="op">.</span><span class="at">createdBy</span> <span class="op">=</span> toSave<span class="op">.</span><span class="at">createdBy</span><span class="op">.</span><span class="at">_id</span><span class="op">;</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (toSave<span class="op">.</span><span class="at">currentHighestBidder</span><span class="op">?.</span><span class="at">_id</span>)</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        toSave<span class="op">.</span><span class="at">currentHighestBidder</span> <span class="op">=</span> toSave<span class="op">.</span><span class="at">currentHighestBidder</span><span class="op">.</span><span class="at">_id</span><span class="op">;</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>      auctions[idx] <span class="op">=</span> toSave<span class="op">;</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>      db<span class="op">.</span><span class="fu">saveAuctions</span>(auctions)<span class="op">;</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+<p> </p>
+<h3 id="winner-notification-banner">5.7 Winner Notification Banner</h3>
+<p>When Jabbar, who listed a phone for auction, decides that Alice’s bid is satisfactory and clicks “Close Auction &amp; Accept Bid,” the following sequence of events happens in under 200 milliseconds:</p>
+<ol type="1">
+<li>The browser calls <code>PATCH /api/auctions/:id/end</code>.</li>
+<li>The server validates that Jabbar is indeed the creator, then sets <code>auction.status = 'ended'</code> and <code>auction.winner = alice._id</code>.</li>
+<li>The server emits <code>auction-ended</code> to the auction room — Jabbar’s own screen updates, the bid panel shows “This auction has ended.”</li>
+<li>The server emits <code>auction-won</code> to Alice’s personal socket room — because Alice had previously joined this room when she connected.</li>
+<li>Alice’s browser receives the event and renders a full-screen modal: <em>“Congratulations! You won the auction for iPhone 15 Pro. Final bid: ₹85,000.”</em></li>
+<li>A toast notification also appears in the corner of her screen, persisting for 3.5 seconds.</li>
+</ol>
+<hr />
+<p> </p>
+<hr />
+<h2 id="conclusion">6. Conclusion</h2>
+<p> </p>
+<p>Building BidVerse was as much an exercise in systems thinking as it was in writing code. The challenge was not just to make a working auction platform — there are many tutorials that get you 80% of the way there — but to make one that felt <em>real</em>. Real auctions have tension. They have a moment when the hammer drops and somebody wins. They have that electric feeling of watching a number go up in real time.</p>
+<p>Socket.IO was the key that unlocked this. Before adding real-time communication, the prototype was just a form-over-a-database application. After plugging in WebSockets, it transformed into something that felt alive. Watching the bid history update without touching the keyboard — seeing another user’s name appear at the top of the leaderboard — that changed everything about how the application felt to use.</p>
+<p>The decision to use JSON files instead of MongoDB was initially a pragmatic one, made to avoid environment setup friction. But it turned out to be a valuable learning exercise in its own right. Implementing manual “populate” (joining user data to auction records) without an ORM’s help forced a deeper understanding of how relational data works at a fundamental level. The importance of storing only IDs in the JSON files and resolving them to full objects at query time — mirroring exactly what MongoDB’s <code>populate()</code> does behind the scenes — was a valuable insight.</p>
+<p>The authentication system using JWT reinforced the stateless nature of HTTP and why tokens are superior to server-side sessions for APIs that need to scale. The <code>protect</code> middleware pattern — a single function that wraps any route and gates it behind authentication — is a clean, reusable solution that could be dropped into any Node.js project without modification.</p>
+<p>Looking ahead, BidVerse has a clear path to production readiness. The JSON database can be replaced with MongoDB Atlas by swapping <code>jsonDb.js</code> with the Mongoose models that already exist in the codebase — a change that would require no modifications to the routes or controllers. The <code>bcrypt</code> + JWT authentication system is already production-grade. The deployment story is straightforward: the backend would be hosted on <strong>Render</strong> and the frontend on <strong>Vercel</strong>.</p>
+<p>In summary, BidVerse successfully demonstrates the power of combining React’s component model with Socket.IO’s event-driven architecture to build a genuinely interactive, real-time web experience. It is not a toy — it is a foundation.</p>
+<hr />
+<p> </p>
+<hr />
+<h2 id="references">7. References</h2>
+<p> </p>
+<p>The following resources were consulted during the research, design, and development of the BidVerse platform:</p>
+<p> </p>
+<p><strong>Frameworks and Libraries</strong></p>
+<ol type="1">
+<li><p>React Documentation — <em>React: The library for web and native user interfaces.</em><br />
+https://react.dev</p></li>
+<li><p>Vite Documentation — <em>Next Generation Frontend Tooling.</em><br />
+https://vitejs.dev</p></li>
+<li><p>Tailwind CSS Documentation — <em>A utility-first CSS framework.</em><br />
+https://tailwindcss.com/docs</p></li>
+<li><p>Socket.IO Documentation — <em>Bidirectional and low-latency communication.</em><br />
+https://socket.io/docs/v4</p></li>
+<li><p>Express.js Documentation — <em>Fast, unopinionated, minimalist web framework for Node.js.</em><br />
+https://expressjs.com</p></li>
+</ol>
+<p> </p>
+<p><strong>Authentication &amp; Security</strong></p>
+<ol start="6" type="1">
+<li><p>jsonwebtoken (npm) — <em>JSON Web Token implementation for Node.js.</em><br />
+https://www.npmjs.com/package/jsonwebtoken</p></li>
+<li><p>bcrypt (npm) — <em>A library to help you hash passwords.</em><br />
+https://www.npmjs.com/package/bcrypt</p></li>
+<li><p>OWASP — <em>JSON Web Token Best Practices.</em><br />
+https://owasp.org/www-community/controls/JSON_Web_Token</p></li>
+</ol>
+<p> </p>
+<p><strong>Design &amp; UI Inspiration</strong></p>
+<ol start="9" type="1">
+<li><p>Glassmorphism CSS Generator — <em>Design reference for frosted glass UI effects.</em><br />
+https://glassmorphism.com</p></li>
+<li><p>Google Fonts — <em>Inter and Syne typefaces.</em><br />
+https://fonts.google.com</p></li>
+<li><p>Unsplash — <em>Free high-resolution product photography used in auction listings.</em><br />
+https://unsplash.com</p></li>
+</ol>
+<p> </p>
+<p><strong>Architecture &amp; Concepts</strong></p>
+<ol start="12" type="1">
+<li><p>MDN Web Docs — <em>WebSockets API.</em><br />
+https://developer.mozilla.org/en-US/docs/Web/API/WebSocket</p></li>
+<li><p>React Router Documentation — <em>Declarative routing for React.</em><br />
+https://reactrouter.com</p></li>
+<li><p>Axios Documentation — <em>Promise based HTTP client for the browser and Node.js.</em><br />
+https://axios-http.com/docs/intro</p></li>
+<li><p>Node.js Documentation — <em>Node.js v20 API Reference.</em><br />
+https://nodejs.org/en/docs</p></li>
+</ol>
+<hr />
+<p> </p>
+<blockquote>
+<p><em>“The best auction is the one where everyone feels the heartbeat of the bid — BidVerse was built to deliver exactly that.”</em></p>
+</blockquote>
+<p> </p>
+<hr />
+<p><em>End of Report — BidVerse Project · May 2026</em></p>
+</body>
+</html>
