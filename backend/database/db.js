@@ -21,10 +21,8 @@ export const connectDB = async () => {
     const conn = await mongoose.connect(uri);
     console.log(`MongoDB connected: ${conn.connection.host}`);
 
-    // Auto-seed if using in-memory DB
-    if (isInMemory) {
-      await autoSeed();
-    }
+    // Always ensure demo accounts exist (it will skip if already present)
+    await autoSeed();
   } catch (err) {
     console.error('MongoDB connection error:', err.message);
     process.exit(1);
