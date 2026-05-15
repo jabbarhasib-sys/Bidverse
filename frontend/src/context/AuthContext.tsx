@@ -10,7 +10,7 @@ interface AuthCtx extends AuthState {
 
 const Ctx = createContext<AuthCtx | null>(null);
 
-const API = import.meta.env.VITE_API_URL;
+const API = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
 
 const stored = () => {
   const token = localStorage.getItem('bv_token');
